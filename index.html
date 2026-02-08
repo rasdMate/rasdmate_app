@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تحميل RasdMate - دائماً آخر إصدار</title>
+    <title>تحميل رصد ميت</title>
     <style>
         * {
             margin: 0;
@@ -93,16 +93,6 @@
             font-size: 0.9em;
         }
         
-        .note {
-            margin-top: 30px;
-            padding: 20px;
-            background: linear-gradient(135deg, #e0e7ff 0%, #f0e7ff 100%);
-            border-radius: 12px;
-            color: #5046e5;
-            font-size: 0.95em;
-            line-height: 1.6;
-        }
-        
         .error {
             color: #e74c3c;
             background: #fee;
@@ -123,10 +113,6 @@
         
         <div id="download-section">
             <p class="loading">⏳ جاري البحث عن آخر إصدار...</p>
-        </div>
-        
-        <div class="note">
-            💡 <strong>ملاحظة:</strong> التطبيق يحدّث نفسه تلقائياً عند توفر إصدارات جديدة
         </div>
     </div>
     
@@ -187,8 +173,7 @@
                     
                     <div class="file-info">
                         📦 ${exeFile.name}<br>
-                        💾 الحجم: ${formatFileSize(exeFile.size)}<br>
-                        📥 التحميلات: ${exeFile.download_count.toLocaleString('ar')}
+                        💾 الحجم: ${formatFileSize(exeFile.size)}
                     </div>
                 `;
             } else {
