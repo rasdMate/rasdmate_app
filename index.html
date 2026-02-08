@@ -563,6 +563,246 @@
             line-height: 1.6;
         }
 
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 30px;
+            background: var(--gray-100);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 35px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(145deg, var(--primary), var(--primary-light));
+            color: white;
+            border-color: var(--accent);
+            transform: scale(1.02);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.02) translateY(-10px);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .pricing-btn {
+            margin-top: auto;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.85em;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(237, 137, 54, 0.4);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .pricing-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .pricing-name {
+            font-size: 1.5em;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card:not(.featured) .pricing-name {
+            color: var(--primary);
+        }
+
+        .pricing-desc {
+            font-size: 0.95em;
+            opacity: 0.8;
+        }
+
+        .pricing-amount {
+            text-align: center;
+            padding: 25px 0;
+            border-top: 1px solid rgba(128, 128, 128, 0.15);
+            border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+            margin-bottom: 25px;
+        }
+
+        .pricing-card.featured .pricing-amount {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .price {
+            font-size: 4em;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .pricing-card:not(.featured) .price {
+            color: var(--primary);
+        }
+
+        .currency {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+
+        .period {
+            font-size: 1em;
+            opacity: 0.7;
+        }
+
+        .savings-badge {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+            font-size: 0.95em;
+        }
+
+        .pricing-card.featured .pricing-features li {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-check {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(39, 201, 63, 0.15);
+            color: #27c93f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .pricing-card.featured .feature-check {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .feature-check.bonus {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white;
+        }
+
+        .pricing-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 18px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 14px;
+            font-size: 1.1em;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 6px 25px rgba(26, 54, 93, 0.25);
+        }
+
+        .pricing-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(26, 54, 93, 0.3);
+        }
+
+        .pricing-btn.featured-btn {
+            background: white;
+            color: var(--primary);
+        }
+
+        .pricing-btn.featured-btn:hover {
+            background: var(--gray-100);
+            transform: translateY(-3px);
+        }
+
+        .pricing-guarantee {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .guarantee-icon {
+            font-size: 1.5em;
+        }
+
+        .pricing-guarantee p {
+            color: var(--text-light);
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
         /* Download Section */
         .download {
             padding: 100px 30px;
@@ -907,6 +1147,10 @@
             .benefits-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .pricing-grid {
+                gap: 30px;
+            }
         }
 
         /* Mobile Menu Overlay Styles */
@@ -1034,6 +1278,32 @@
                 gap: 15px;
             }
 
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+
+            .pricing-card {
+                padding: 30px 25px;
+            }
+
+            .price {
+                font-size: 3em;
+            }
+
+            .pricing-guarantee {
+                flex-direction: column;
+                text-align: center;
+            }
+
             .download-box {
                 padding: 40px 25px;
             }
@@ -1109,6 +1379,7 @@
             <ul class="nav-links">
                 <li><a href="#features">المميزات</a></li>
                 <li><a href="#benefits">لماذا رصد ميت؟</a></li>
+                <li><a href="#pricing">الأسعار</a></li>
                 <li><a href="#download">التحميل</a></li>
             </ul>
             <a href="#download" class="nav-cta">حمّل الآن</a>
@@ -1122,6 +1393,7 @@
         <div class="mobile-nav-content">
             <a href="#features" class="mobile-nav-link">المميزات</a>
             <a href="#benefits" class="mobile-nav-link">لماذا رصد ميت؟</a>
+            <a href="#pricing" class="mobile-nav-link">الأسعار</a>
             <a href="#download" class="mobile-nav-link">التحميل</a>
             <a href="#download" class="mobile-cta-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -1291,6 +1563,91 @@
                     <h3 class="benefit-title">تحسين الإنتاجية</h3>
                     <p class="benefit-desc">ركّز على تطوير عملك بدلاً من الأعمال الروتينية</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">الأسعار</span>
+                <h2 class="section-title">اختر الخطة المناسبة لك</h2>
+                <p class="section-subtitle">
+                    جميع المميزات مفتوحة في كل الخطط - اختر ما يناسب احتياجاتك
+                </p>
+            </div>
+            <div class="pricing-grid">
+                <!-- Monthly Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <div class="pricing-icon">📅</div>
+                        <h3 class="pricing-name">الخطة الشهرية</h3>
+                        <p class="pricing-desc">مرونة كاملة - ادفع شهرياً</p>
+                    </div>
+                    <div class="pricing-amount">
+                        <span class="price">100</span>
+                        <span class="currency">ريال</span>
+                        <span class="period">/ شهرياً</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="feature-check">✓</span> موازنة المخزون الكاملة</li>
+                        <li><span class="feature-check">✓</span> إدارة الإرساليات</li>
+                        <li><span class="feature-check">✓</span> البحث السريع والدقيق</li>
+                        <li><span class="feature-check">✓</span> تقارير تفصيلية</li>
+                        <li><span class="feature-check">✓</span> تحديثات مستمرة</li>
+                        <li><span class="feature-check">✓</span> دعم فني متواصل</li>
+                    </ul>
+                    <a href="https://wa.me/967714505421?text=مرحباً، أريد الاشتراك في الخطة الشهرية (100 ريال)"
+                        class="pricing-btn" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                        تواصل للاشتراك
+                    </a>
+                </div>
+
+                <!-- Yearly Plan -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">الأكثر توفيراً</div>
+                    <div class="pricing-header">
+                        <div class="pricing-icon">🏆</div>
+                        <h3 class="pricing-name">الخطة السنوية</h3>
+                        <p class="pricing-desc">وفّر أكثر مع الاشتراك السنوي</p>
+                    </div>
+                    <div class="pricing-amount">
+                        <span class="price">600</span>
+                        <span class="currency">ريال</span>
+                        <span class="period">/ سنوياً</span>
+                    </div>
+                    <div class="savings-badge">
+                        <span>💰</span> وفّر 600 ريال سنوياً
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="feature-check">✓</span> موازنة المخزون الكاملة</li>
+                        <li><span class="feature-check">✓</span> إدارة الإرساليات</li>
+                        <li><span class="feature-check">✓</span> البحث السريع والدقيق</li>
+                        <li><span class="feature-check">✓</span> تقارير تفصيلية</li>
+                        <li><span class="feature-check">✓</span> تحديثات مستمرة</li>
+                        <li><span class="feature-check">✓</span> دعم فني متواصل</li>
+                    </ul>
+                    <a href="https://wa.me/967714505421?text=مرحباً، أريد الاشتراك في الخطة السنوية (600 ريال)"
+                        class="pricing-btn featured-btn" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                        تواصل للاشتراك
+                    </a>
+                </div>
+            </div>
+
+            <div class="pricing-guarantee">
+                <div class="guarantee-icon">🔒</div>
+                <p>ضمان الرضا التام • دعم فني على مدار الساعة • تحديثات مجانية</p>
             </div>
         </div>
     </section>
