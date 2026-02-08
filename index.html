@@ -1,179 +1,1333 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تحميل رصد ميت</title>
+    <title>رصد ميت - شريكك في إدارة مخزون رصد والحماية من المخالفات</title>
+    <meta name="description"
+        content="رصد ميت - نظام متكامل لإدارة وموازنة مخزون رصد. احمِ نفسك من مخالفات هيئة الغذاء والدواء مع واجهة سهلة واحترافية.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2d4a7c;
+            --accent: #ed8936;
+            --accent-dark: #dd7723;
+            --text-dark: #1a1a2e;
+            --text-light: #4a5568;
+            --white: #ffffff;
+            --gray-100: #f7fafc;
+            --gray-200: #edf2f7;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', 'Cairo', Tahoma, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--gray-100);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(145deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-        }
-        
-        .container {
-            background: white;
-            padding: 60px 40px;
-            border-radius: 25px;
-            box-shadow: 0 25px 70px rgba(0,0,0,0.3);
-            max-width: 650px;
-            width: 100%;
-            text-align: center;
-        }
-        
-        .logo {
-            font-size: 4em;
-            margin-bottom: 10px;
-        }
-        
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 2.8em;
-            font-weight: 700;
-        }
-        
-        .version-badge {
-            display: inline-block;
-            background: #f0f0f0;
-            padding: 8px 20px;
-            border-radius: 20px;
-            color: #667eea;
+            color: white;
+            font-size: 1.4em;
             font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1em;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(237, 137, 54, 0.3);
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(237, 137, 54, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 30px 80px;
+            background: linear-gradient(160deg, var(--white) 0%, var(--gray-200) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 60%;
+            height: 120%;
+            background: linear-gradient(145deg, rgba(26, 54, 93, 0.03), transparent);
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -15%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(145deg, rgba(237, 137, 54, 0.05), transparent);
+            transform: rotate(20deg);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2em;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent);
+            position: relative;
+        }
+
+        .hero-tagline {
+            font-size: 1.25em;
+            color: var(--text-light);
             margin-bottom: 35px;
-            font-size: 0.95em;
+            max-width: 520px;
         }
-        
-        .loading {
-            color: #999;
-            font-size: 1.1em;
-            margin: 30px 0;
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
         }
-        
-        .download-btn {
+
+        .btn-primary {
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            padding: 18px 40px;
-            background: linear-gradient(135deg, #0078D4 0%, #005a9e 100%);
+            padding: 18px 35px;
+            background: var(--primary);
             color: white;
             text-decoration: none;
-            border-radius: 12px;
-            font-size: 1.2em;
-            font-weight: 600;
-            margin: 20px 0;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 700;
             transition: all 0.3s;
+            box-shadow: 0 6px 25px rgba(26, 54, 93, 0.25);
             cursor: pointer;
+            border: none;
         }
-        
-        .download-btn:hover {
+
+        .btn-primary:hover {
+            background: var(--primary-light);
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            box-shadow: 0 10px 35px rgba(26, 54, 93, 0.3);
         }
-        
-        .download-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
+
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: wait;
             transform: none;
         }
-        
-        .file-info {
-            margin-top: 20px;
-            color: #666;
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 35px;
+            background: transparent;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border: 2px solid var(--primary);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .windows-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gray-200);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            color: var(--text-light);
+        }
+
+        .windows-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            padding-top: 30px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: var(--text-light);
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+        }
+
+        .app-preview {
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .app-preview:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .app-header {
+            background: linear-gradient(145deg, var(--primary), var(--primary-light));
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .window-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            background: #ff5f56;
+        }
+
+        .dot-yellow {
+            background: #ffbd2e;
+        }
+
+        .dot-green {
+            background: #27c93f;
+        }
+
+        .app-title {
+            color: white;
+            font-weight: 600;
+            margin-right: auto;
+        }
+
+        .app-body {
+            padding: 30px 25px;
+            background: var(--gray-100);
+            min-height: 280px;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .app-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .app-card-title {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .app-card-badge {
+            background: rgba(39, 201, 63, 0.15);
+            color: #27c93f;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .app-progress {
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .app-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            width: 75%;
+            border-radius: 4px;
+        }
+
+        .app-stats-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .app-stat-box {
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .app-stat-value {
+            font-size: 1.8em;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .app-stat-label {
+            font-size: 0.85em;
+            color: var(--text-light);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 30px;
+            background: var(--white);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: rgba(237, 137, 54, 0.1);
+            color: var(--accent);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 1.15em;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--gray-100);
+            border-radius: 16px;
+            padding: 35px 30px;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            background: white;
+            border-color: var(--gray-200);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(145deg, var(--primary), var(--primary-light));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+
+        .feature-title {
+            font-size: 1.25em;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .feature-desc {
+            color: var(--text-light);
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 100px 30px;
+            background: linear-gradient(160deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8em;
+            backdrop-filter: blur(5px);
+        }
+
+        .benefit-title {
+            font-size: 1.15em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .benefit-desc {
+            font-size: 0.9em;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Download Section */
+        .download {
+            padding: 100px 30px;
+            background: var(--gray-100);
+        }
+
+        .download-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .download-box {
+            background: white;
+            border-radius: 24px;
+            padding: 60px 50px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .download-title {
+            font-size: 2.2em;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .download-subtitle {
+            font-size: 1.1em;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        #download-section {
+            margin-bottom: 30px;
+        }
+
+        .version-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gray-100);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 0.95em;
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .version-badge {
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 0.85em;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 22px 50px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 14px;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(26, 54, 93, 0.3);
+        }
+
+        .download-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(26, 54, 93, 0.35);
+        }
+
+        .download-btn svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .file-details {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 25px;
+            color: var(--text-light);
             font-size: 0.9em;
         }
-        
+
+        .file-detail {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .platform-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+            padding: 15px 25px;
+            background: rgba(237, 137, 54, 0.08);
+            border-radius: 10px;
+            color: var(--accent-dark);
+            font-size: 0.9em;
+        }
+
+        .requirements {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .requirements h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1em;
+        }
+
+        .requirements-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .requirements-list li {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+
+        .check-icon {
+            color: #27c93f;
+        }
+
+        .loading {
+            color: var(--text-light);
+            font-size: 1.1em;
+            padding: 30px 0;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--gray-200);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
         .error {
-            color: #e74c3c;
-            background: #fee;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
+            color: #c53030;
+            background: #fff5f5;
+            padding: 20px 25px;
+            border-radius: 12px;
+            border: 1px solid #feb2b2;
+        }
+
+        .error a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 30px 30px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            max-width: 350px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .footer-logo-text {
+            font-size: 1.4em;
+            font-weight: 800;
+        }
+
+        .footer-desc {
+            opacity: 0.85;
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 60px;
+        }
+
+        .footer-column h4 {
+            font-size: 1em;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-copyright {
+            opacity: 0.75;
+            font-size: 0.9em;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-tagline {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.4em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .download-box {
+                padding: 40px 25px;
+            }
+
+            .download-title {
+                font-size: 1.8em;
+            }
+
+            .file-details {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 100px 20px 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 2em;
+            }
+
+            .hero-tagline {
+                font-size: 1.05em;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .app-preview {
+                transform: none;
+            }
+
+            .requirements-list {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="logo">📱</div>
-        <h1>RasdMate</h1>
-        
-        <div class="version-badge" id="version">
-            جاري التحميل...
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">ر</div>
+                <span class="logo-text">رصد ميت</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">المميزات</a></li>
+                <li><a href="#benefits">لماذا رصد ميت؟</a></li>
+                <li><a href="#download">التحميل</a></li>
+            </ul>
+            <a href="#download" class="nav-cta">حمّل الآن</a>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>
+                    احمِ نفسك من المخالفات مع
+                    <span>رصد ميت</span>
+                </h1>
+                <p class="hero-tagline">
+                    نظام متكامل لإدارة وموازنة مخزون رصد. تجنّب مخالفات هيئة الغذاء والدواء
+                    مع واجهة سهلة الاستخدام صُممت خصيصًا لتسهيل عملك اليومي.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        تحميل مجاني
+                    </a>
+                    <a href="#features" class="btn-secondary">
+                        اكتشف المزيد
+                    </a>
+                </div>
+                <div class="windows-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" />
+                    </svg>
+                    <span>متوفر لنظام Windows فقط</span>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="app-preview">
+                    <div class="app-header">
+                        <div class="window-controls">
+                            <div class="window-dot dot-red"></div>
+                            <div class="window-dot dot-yellow"></div>
+                            <div class="window-dot dot-green"></div>
+                        </div>
+                        <span class="app-title">رصد ميت</span>
+                    </div>
+                    <div class="app-body">
+                        <div class="app-card">
+                            <div class="app-card-header">
+                                <span class="app-card-title">📦 إحصائيات المخزون</span>
+                                <span class="app-card-badge">✓ محدّث</span>
+                            </div>
+                            <div class="app-progress">
+                                <div class="app-progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="app-stats-row">
+                            <div class="app-stat-box">
+                                <div class="app-stat-value">156</div>
+                                <div class="app-stat-label">منتج</div>
+                            </div>
+                            <div class="app-stat-box">
+                                <div class="app-stat-value">42</div>
+                                <div class="app-stat-label">إرسالية</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div id="download-section">
-            <p class="loading">⏳ جاري البحث عن آخر إصدار...</p>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">المميزات</span>
+                <h2 class="section-title">كل ما تحتاجه لإدارة رصد</h2>
+                <p class="section-subtitle">
+                    أدوات قوية ومتكاملة صُممت لموازنة مخزونك وحمايتك من المخالفات
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">موازنة المخزون</h3>
+                    <p class="feature-desc">
+                        وازن مخزونك مع نظام رصد بسهولة. اكتشف الفروقات وعالجها قبل أن تصبح مخالفات.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📤</div>
+                    <h3 class="feature-title">إدارة الإرساليات</h3>
+                    <p class="feature-desc">
+                        أرسل واستلم إرساليات رصد بسهولة. تتبع كل عملية وتأكد من تطابق الكميات.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">بحث سريع ودقيق</h3>
+                    <p class="feature-desc">
+                        ابحث عن أي منتج أو إرسالية في ثوانٍ معدودة. نظام بحث ذكي يفهم ما تريده.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">واجهة سهلة</h3>
+                    <p class="feature-desc">
+                        تصميم بسيط ومنظم يجعل استخدام النظام ممتعاً. لا حاجة لتدريب معقد.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">أمان وخصوصية</h3>
+                    <p class="feature-desc">
+                        بياناتك محمية بأعلى معايير الأمان. نحافظ على سرية معلوماتك التجارية.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="feature-title">متوافق مع رصد</h3>
+                    <p class="feature-desc">
+                        متصل مباشرة بنظام رصد. نحدّث باستمرار ليتوافق مع أي تغييرات في النظام.
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
-    
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label" style="background: rgba(255,255,255,0.15); color: white;">لماذا رصد
+                    ميت؟</span>
+                <h2 class="section-title" style="color: white;">راحة بال وحماية لعملك</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <h3 class="benefit-title">توفير الوقت</h3>
+                    <p class="benefit-desc">أنجز في دقائق ما كان يستغرق ساعات من العمل اليدوي</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📉</div>
+                    <h3 class="benefit-title">تقليل الأخطاء</h3>
+                    <p class="benefit-desc">قلل الأخطاء البشرية مع نظام تتبع دقيق ومنظم</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">�️</div>
+                    <h3 class="benefit-title">حماية من المخالفات</h3>
+                    <p class="benefit-desc">احمِ نفسك من مخالفات هيئة الغذاء والدواء</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📈</div>
+                    <h3 class="benefit-title">تحسين الإنتاجية</h3>
+                    <p class="benefit-desc">ركّز على تطوير عملك بدلاً من الأعمال الروتينية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download" id="download">
+        <div class="download-container">
+            <div class="download-box">
+                <h2 class="download-title">جاهز لحماية عملك؟</h2>
+                <p class="download-subtitle">حمّل رصد ميت الآن واضمن توافق مخزونك مع نظام رصد</p>
+
+                <div id="version-container">
+                    <div class="version-info">
+                        <span id="version">جاري التحقق من الإصدار...</span>
+                    </div>
+                </div>
+
+                <div id="download-section">
+                    <p class="loading">
+                        <span class="loading-spinner"></span>
+                        جاري البحث عن آخر إصدار...
+                    </p>
+                </div>
+
+                <div class="platform-note">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" />
+                    </svg>
+                    <span>متوفر حالياً لأجهزة Windows فقط</span>
+                </div>
+
+                <div class="requirements">
+                    <h4>متطلبات التشغيل</h4>
+                    <ul class="requirements-list">
+                        <li><span class="check-icon">✓</span> Windows 10 أو أحدث</li>
+                        <li><span class="check-icon">✓</span> 4 GB RAM</li>
+                        <li><span class="check-icon">✓</span> 200 MB مساحة تخزين</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">ر</div>
+                        <span class="footer-logo-text">رصد ميت</span>
+                    </div>
+                    <p class="footer-desc">
+                        نظام متكامل لإدارة وموازنة مخزون رصد. نساعدك على الالتزام بمتطلبات الهيئة وتجنب المخالفات.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>روابط سريعة</h4>
+                        <ul>
+                            <li><a href="#features">المميزات</a></li>
+                            <li><a href="#benefits">لماذا رصد ميت</a></li>
+                            <li><a href="#download">التحميل</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>الدعم</h4>
+                        <ul>
+                            <li><a href="#">تواصل معنا</a></li>
+                            <li><a href="#">الأسئلة الشائعة</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 رصد ميت. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // معلومات الـ repo (غيّرها حسب مشروعك)
+        // معلومات الـ repo
         const GITHUB_OWNER = 'rasdMate';
         const GITHUB_REPO = 'rasdmate_app';
-        
+
         // جلب آخر إصدار من GitHub API
         async function getLatestRelease() {
             try {
                 const response = await fetch(
                     `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/releases/latest`
                 );
-                
+
                 if (!response.ok) {
                     throw new Error('فشل في جلب الإصدار');
                 }
-                
+
                 const release = await response.json();
                 displayRelease(release);
-                
+
             } catch (error) {
                 console.error('خطأ:', error);
+                document.getElementById('version').innerHTML = 'تعذر التحقق من الإصدار';
                 document.getElementById('download-section').innerHTML = `
                     <div class="error">
                         ⚠️ عذراً، حدث خطأ في جلب آخر إصدار.<br>
-                        الرجاء المحاولة لاحقاً أو زيارة صفحة 
+                        الرجاء المحاولة لاحقاً أو زيارة 
                         <a href="https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/releases" 
-                           target="_blank" 
-                           style="color: #0078D4;">
-                            Releases
+                           target="_blank">
+                            صفحة التحميلات
                         </a>
                     </div>
                 `;
             }
         }
-        
+
         function displayRelease(release) {
             // عرض رقم الإصدار
-            document.getElementById('version').innerHTML = 
-                `⚡ الإصدار ${release.tag_name} - ${formatDate(release.published_at)}`;
-            
+            const versionText = `الإصدار ${release.tag_name}`;
+            document.getElementById('version').innerHTML = `
+                <span class="version-badge">${release.tag_name}</span>
+                <span>تاريخ الإصدار: ${formatDate(release.published_at)}</span>
+            `;
+
             // البحث عن ملف .exe في الـ assets
-            const exeFile = release.assets.find(asset => 
+            const exeFile = release.assets.find(asset =>
                 asset.name.endsWith('.exe')
             );
-            
+
             if (exeFile) {
                 // عرض زر التحميل
                 document.getElementById('download-section').innerHTML = `
                     <a href="${exeFile.browser_download_url}" 
                        class="download-btn"
                        download>
-                        <span style="font-size: 1.5em;">🪟</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
                         <span>تحميل لنظام Windows</span>
                     </a>
                     
-                    <div class="file-info">
-                        📦 ${exeFile.name}<br>
-                        💾 الحجم: ${formatFileSize(exeFile.size)}
+                    <div class="file-details">
+                        <span class="file-detail">
+                            <span>📦</span>
+                            <span>${exeFile.name}</span>
+                        </span>
+                        <span class="file-detail">
+                            <span>💾</span>
+                            <span>${formatFileSize(exeFile.size)}</span>
+                        </span>
+                        <span class="file-detail">
+                            <span>⬇️</span>
+                            <span>${exeFile.download_count.toLocaleString('ar-SA')} تحميل</span>
+                        </span>
                     </div>
                 `;
             } else {
@@ -181,23 +1335,21 @@
                 document.getElementById('download-section').innerHTML = `
                     <div class="error">
                         ⚠️ لم يتم العثور على ملف Windows في هذا الإصدار.<br>
-                        <a href="${release.html_url}" 
-                           target="_blank" 
-                           style="color: #0078D4;">
+                        <a href="${release.html_url}" target="_blank">
                             عرض جميع الملفات
                         </a>
                     </div>
                 `;
             }
         }
-        
+
         // تنسيق التاريخ
         function formatDate(dateString) {
             const date = new Date(dateString);
             const now = new Date();
             const diffTime = Math.abs(now - date);
             const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-            
+
             if (diffDays === 0) return 'اليوم';
             if (diffDays === 1) return 'أمس';
             if (diffDays < 7) return `قبل ${diffDays} أيام`;
@@ -205,7 +1357,7 @@
             if (diffDays < 365) return `قبل ${Math.floor(diffDays / 30)} أشهر`;
             return date.toLocaleDateString('ar-SA');
         }
-        
+
         // تنسيق حجم الملف
         function formatFileSize(bytes) {
             if (bytes === 0) return '0 Bytes';
@@ -214,9 +1366,34 @@
             const i = Math.floor(Math.log(bytes) / Math.log(k));
             return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
         }
-        
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
+            }
+        });
+
         // تشغيل عند تحميل الصفحة
         getLatestRelease();
     </script>
 </body>
+
 </html>
