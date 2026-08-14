@@ -629,75 +629,6 @@
             position: relative;
         }
 
-        /* Facility Tab Switcher */
-        .pricing-tabs-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 50px;
-        }
-
-        .pricing-tabs {
-            background: rgba(15, 23, 42, 0.04);
-            border: 1px solid rgba(15, 23, 42, 0.06);
-            padding: 6px;
-            border-radius: 50px;
-            display: flex;
-            gap: 4px;
-            max-width: 560px;
-            width: 100%;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
-        }
-
-        .pricing-tab-btn {
-            flex: 1;
-            background: none;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 40px;
-            cursor: pointer;
-            font-family: inherit;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: var(--transition);
-            text-align: right;
-        }
-
-        .pricing-tab-btn.active {
-            background: var(--white);
-            box-shadow: var(--shadow-md);
-        }
-
-        .tab-icon {
-            font-size: 1.3em;
-        }
-
-        .tab-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .tab-title {
-            font-weight: 800;
-            font-size: 0.95em;
-            color: var(--primary);
-        }
-
-        .tab-subtitle {
-            font-size: 0.72em;
-            color: var(--text-light);
-            margin-top: 1px;
-        }
-
-        .pricing-tab-btn:not(.active) .tab-title {
-            color: var(--text-light);
-        }
-
-        .pricing-tab-btn:not(.active) .tab-subtitle {
-            color: var(--text-muted);
-        }
-
         /* Grids wrapping tabs */
         .pricing-grid-wrapper {
             position: relative;
@@ -1518,18 +1449,6 @@
                 gap: 15px;
             }
 
-            .pricing-tabs {
-                flex-direction: column;
-                border-radius: 20px;
-                padding: 10px;
-                max-width: 400px;
-            }
-
-            .pricing-tab-btn {
-                text-align: center;
-                justify-content: center;
-            }
-
             .pricing-grid {
                 grid-template-columns: 1fr;
                 gap: 25px;
@@ -1828,144 +1747,11 @@
                 <span class="section-label">الأسعار</span>
                 <h2 class="section-title">اختر الخطة المناسبة لمنشأتك</h2>
                 <p class="section-subtitle">
-                    خطط مخصصة تلبي احتياجاتك بدقة - اختر نوع منشأتك لرؤية العروض والأسعار
+                    خطط مخصصة تلبي احتياجاتك بدقة - جميع المميزات مفتوحة في كل الخطط
                 </p>
             </div>
 
-            <!-- Facility Tab Switcher -->
-            <div class="pricing-tabs-container">
-                <div class="pricing-tabs">
-                    <button class="pricing-tab-btn active" onclick="switchPricing('warehouse')">
-                        <span class="tab-icon">🏬</span>
-                        <div class="tab-text">
-                            <span class="tab-title">باقة المستودعات</span>
-                            <span class="tab-subtitle">إرسال واستقبال كامل وتنظيف شهري</span>
-                        </div>
-                    </button>
-                    <button class="pricing-tab-btn" onclick="switchPricing('pharmacy')">
-                        <span class="tab-icon">🏥</span>
-                        <div class="tab-text">
-                            <span class="tab-title">باقة الصيدليات</span>
-                            <span class="tab-subtitle">تنظيف غير محدود وبدون إرسال</span>
-                        </div>
-                    </button>
-                </div>
-            </div>
-
             <div class="pricing-grid-wrapper">
-                <!-- Pharmacy Grid -->
-                <div id="pricing-grid-pharmacy" class="pricing-grid">
-                    <!-- Pharmacy Monthly -->
-                    <div class="pricing-card">
-                        <div class="pricing-header">
-                            <div class="pricing-icon">📅</div>
-                            <h3 class="pricing-name">الخطة الشهرية</h3>
-                            <p class="pricing-desc">مرونة كاملة - ادفع شهرياً</p>
-                        </div>
-                        <div class="pricing-amount">
-                            <span class="old-price">200 ريال</span>
-                            <div class="price-row">
-                                <span class="price">100</span>
-                                <span class="currency">ريال</span>
-                                <span class="period">/ شهرياً</span>
-                            </div>
-                            <span class="discount-label">خصم 50% لفترة محدودة</span>
-                        </div>
-                        <ul class="pricing-features">
-                            <li><span class="feature-check">✓</span> <strong>تنظيف مخزون الصيدلية</strong> <span
-                                    class="feature-highlight-badge">لا محدود طوال الاشتراك</span></li>
-                            <li><span class="feature-check">✓</span> إدارة وقبول الحزم المرسلة</li>
-                            <li><span class="feature-check">✓</span> البحث السريع والدقيق</li>
-                            <li><span class="feature-check">✓</span> تقارير تفصيلية ومطابقة</li>
-                            <li><span class="feature-check">✓</span> تحديثات مستمرة ودعم فني</li>
-                        </ul>
-                        <a href="https://wa.me/967714505421?text=مرحباً، أريد الاشتراك في باقة الصيدليات - الخطة الشهرية (100 ريال)"
-                            class="pricing-btn" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="currentColor">
-                                <path
-                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                            </svg>
-                            تواصل للاشتراك
-                        </a>
-                    </div>
-
-                    <!-- Pharmacy Yearly -->
-                    <div class="pricing-card featured">
-                        <div class="pricing-badge">الأكثر توفيراً</div>
-                        <div class="pricing-header">
-                            <div class="pricing-icon">🏆</div>
-                            <h3 class="pricing-name">الخطة السنوية</h3>
-                            <p class="pricing-desc">وفّر أكثر مع الاشتراك السنوي</p>
-                        </div>
-                        <div class="pricing-amount">
-                            <span class="old-price">1200 ريال</span>
-                            <div class="price-row">
-                                <span class="price">840</span>
-                                <span class="currency">ريال</span>
-                                <span class="period">/ سنوياً</span>
-                            </div>
-                            <span class="discount-label">خصم 30% شامل الدعم والتحديثات</span>
-                        </div>
-                        <div class="savings-badge">
-                            <span>💰</span> وفر 360 ريال سنوياً
-                        </div>
-                        <ul class="pricing-features">
-                            <li><span class="feature-check">✓</span> <strong>تنظيف مخزون الصيدلية</strong> <span
-                                    class="feature-highlight-badge">لا محدود طوال الاشتراك</span></li>
-                            <li><span class="feature-check">✓</span> إدارة وقبول الحزم المرسلة</li>
-                            <li><span class="feature-check">✓</span> البحث السريع والدقيق</li>
-                            <li><span class="feature-check">✓</span> تقارير تفصيلية ومطابقة</li>
-                            <li><span class="feature-check">✓</span> تحديثات مستمرة ودعم فني</li>
-                        </ul>
-                        <a href="https://wa.me/967714505421?text=مرحباً، أريد الاشتراك في باقة الصيدليات - الخطة السنوية (840 ريال)"
-                            class="pricing-btn featured-btn" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="currentColor">
-                                <path
-                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                            </svg>
-                            تواصل للاشتراك
-                        </a>
-                    </div>
-
-                    <!-- Pharmacy Trial -->
-                    <div class="pricing-card">
-                        <div class="pricing-header">
-                            <div class="pricing-icon">🚀</div>
-                            <h3 class="pricing-name">تجربة مجانية</h3>
-                            <p class="pricing-desc">جرب النظام كاملاً لمدة 3 أيام</p>
-                        </div>
-                        <div class="pricing-amount">
-                            <span class="old-price">50 ريال</span>
-                            <div class="price-row">
-                                <span class="price">0</span>
-                                <span class="currency">ريال</span>
-                                <span class="period">/ 3 أيام</span>
-                            </div>
-                            <span class="discount-label">متاحة فوراً بدون بطاقة ائتمان</span>
-                        </div>
-                        <ul class="pricing-features">
-                            <li><span class="feature-cross">✗</span> لا يشمل تنظيف مخزون الصيدلية</li>
-                            <li><span class="feature-check">✓</span> إدارة وقبول الحزم المرسلة</li>
-                            <li><span class="feature-check">✓</span> البحث السريع والدقيق</li>
-                            <li><span class="feature-check">✓</span> تقارير تفصيلية ومطابقة</li>
-                            <li><span class="feature-cross">✗</span> لا يشمل ميزة إرسال الحزم</li>
-                            <li><span class="feature-check">✓</span> تجربة خالية تماماً من المخاطر</li>
-                        </ul>
-                        <a href="#download" class="pricing-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                <polyline points="7 10 12 15 17 10" />
-                                <line x1="12" y1="15" x2="12" y2="3" />
-                            </svg>
-                            حمل الآن وابدأ التجربة
-                        </a>
-                    </div>
-                </div>
-
                 <!-- Warehouse Grid -->
                 <div id="pricing-grid-warehouse" class="pricing-grid active">
                     <!-- Warehouse Monthly -->
@@ -1989,13 +1775,10 @@
                                     class="feature-highlight-badge"
                                     style="background:linear-gradient(135deg, #10b981, #059669);">كامل ومفتوح</span>
                             </li>
-                            <li><span class="feature-check">✓</span> تنظيف مخزون المستودع <span
-                                    class="feature-highlight-badge" style="background: #6b7280;">مرة واحدة شهرياً</span>
-                            </li>
+                            <li><span class="feature-check">✓</span> تنظيف مخزون المستودع</li>
                             <li><span class="feature-check">✓</span> موازنة المخزون الكاملة</li>
                             <li><span class="feature-check">✓</span> استيراد وتصدير ملفات إكسل الذكية</li>
-                            <li><span class="feature-check">✓</span> <strong>إدارة الجهات المجهولة</strong> <span
-                                    class="feature-highlight-badge">توليد تقارير الهيئة</span></li>
+                            <li><span class="feature-check">✓</span> <strong>إدارة الجهات المجهولة</strong></li>
                             <li><span class="feature-check">✓</span> بحث متقدم ودقيق وتقارير تفصيلية</li>
                             <li><span class="feature-check">✓</span> تحديثات مستمرة ودعم فني متواصل</li>
                         </ul>
@@ -2021,27 +1804,24 @@
                         <div class="pricing-amount">
                             <span class="old-price">1200 ريال</span>
                             <div class="price-row">
-                                <span class="price">600</span>
+                                <span class="price">840</span>
                                 <span class="currency">ريال</span>
                                 <span class="period">/ سنوياً</span>
                             </div>
-                            <span class="discount-label">توفير 50% شامل الدعم والتحديثات</span>
+                            <span class="discount-label">توفير 30% شامل الدعم والتحديثات</span>
                         </div>
                         <div class="savings-badge">
-                            <span>💰</span> وفر 600 ريال سنوياً
+                            <span>💰</span> وفر 340 ريال سنوياً
                         </div>
                         <ul class="pricing-features">
                             <li><span class="feature-check">✓</span> <strong>إرسال واستقبال الحزم</strong> <span
                                     class="feature-highlight-badge"
                                     style="background:linear-gradient(135deg, #10b981, #059669);">كامل ومفتوح</span>
                             </li>
-                            <li><span class="feature-check">✓</span> تنظيف مخزون المستودع <span
-                                    class="feature-highlight-badge" style="background: #6b7280;">مرة واحدة شهرياً</span>
-                            </li>
+                            <li><span class="feature-check">✓</span> تنظيف مخزون المستودع</li>
                             <li><span class="feature-check">✓</span> موازنة المخزون الكاملة</li>
                             <li><span class="feature-check">✓</span> استيراد وتصدير ملفات إكسل الذكية</li>
-                            <li><span class="feature-check">✓</span> <strong>إدارة الجهات المجهولة</strong> <span
-                                    class="feature-highlight-badge">توليد تقارير الهيئة</span></li>
+                            <li><span class="feature-check">✓</span> <strong>إدارة الجهات المجهولة</strong></li>
                             <li><span class="feature-check">✓</span> بحث متقدم ودقيق وتقارير تفصيلية</li>
                             <li><span class="feature-check">✓</span> تحديثات مستمرة ودعم فني متواصل</li>
                         </ul>
@@ -2073,15 +1853,11 @@
                             <span class="discount-label">متاحة فوراً للتقييم والتجربة</span>
                         </div>
                         <ul class="pricing-features">
-                            <li><span class="feature-check">✓</span> <strong>إرسال واستقبال الحزم</strong> <span
-                                    class="feature-highlight-badge"
-                                    style="background:linear-gradient(135deg, #10b981, #059669);">مفتوح أثناء
-                                    التجربة</span></li>
+                            <li><span class="feature-check">✓</span> <strong>إرسال واستقبال الحزم</strong></li>
                             <li><span class="feature-cross">✗</span> لا يشمل تنظيف مخزون المستودع</li>
                             <li><span class="feature-check">✓</span> موازنة المخزون الكاملة</li>
                             <li><span class="feature-check">✓</span> استيراد وتصدير ملفات إكسل الذكية</li>
-                            <li><span class="feature-check">✓</span> <strong>إدارة الجهات المجهولة</strong> <span
-                                    class="feature-highlight-badge">توليد تقارير الهيئة</span></li>
+                            <li><span class="feature-check">✓</span> <strong>إدارة الجهات المجهولة</strong></li>
                             <li><span class="feature-check">✓</span> بحث متقدم ودقيق وتقارير تفصيلية</li>
                             <li><span class="feature-check">✓</span> تجربة خالية تماماً من الالتزامات</li>
                         </ul>
@@ -2331,43 +2107,6 @@
         // تشغيل عند تحميل الصفحة
         getLatestRelease();
 
-        // Pricing Tab switcher
-        function switchPricing(type) {
-            // Remove active class from all tabs
-            document.querySelectorAll('.pricing-tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            // Add active class to clicked tab
-            const activeBtn = Array.from(document.querySelectorAll('.pricing-tab-btn')).find(btn =>
-                btn.getAttribute('onclick').includes(type)
-            );
-            if (activeBtn) activeBtn.classList.add('active');
-
-            // Switch grids
-            const pharmacyGrid = document.getElementById('pricing-grid-pharmacy');
-            const warehouseGrid = document.getElementById('pricing-grid-warehouse');
-
-            if (type === 'pharmacy') {
-                warehouseGrid.classList.remove('active');
-                setTimeout(() => {
-                    warehouseGrid.style.display = 'none';
-                    pharmacyGrid.style.display = 'grid';
-                    setTimeout(() => {
-                        pharmacyGrid.classList.add('active');
-                    }, 50);
-                }, 400);
-            } else {
-                pharmacyGrid.classList.remove('active');
-                setTimeout(() => {
-                    pharmacyGrid.style.display = 'none';
-                    warehouseGrid.style.display = 'grid';
-                    setTimeout(() => {
-                        warehouseGrid.classList.add('active');
-                    }, 50);
-                }, 400);
-            }
-        }
-
         // Intersection Observer for scroll reveal animations
         document.addEventListener('DOMContentLoaded', () => {
             const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
@@ -2385,10 +2124,6 @@
             });
 
             revealElements.forEach(el => observer.observe(el));
-
-            // Ensure correct initial display for hidden grids
-            const pharmacyGrid = document.getElementById('pricing-grid-pharmacy');
-            if (pharmacyGrid) pharmacyGrid.style.display = 'none';
         });
 
     </script>
